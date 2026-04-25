@@ -52,24 +52,26 @@ app.get('*', (req, res) => {
 });
 
 // ─── MongoDB Connection ──────────────────────────────────────
-const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost:27017/mindspace3d';
+// ─── MongoDB Connection ──────────────────────────────────────
 
-mongoose.connect(MONGODB_URI, { serverSelectionTimeoutMS: 2000 })
+// FIX: use correct env variable name
+const MONGODB_URI = process.env.MONGO_URI;
+
+if (!MONGODB_URI) {
+  console.error("❌ MONGO_URI is not defined in environment variables");
+  process.exit(1);
+}
+
+mongoose.connect(MONGODB_URI)
   .then(() => {
-    console.log('✅ Connected to MongoDB successfully');
-    // Start the server after DB connection
+    console.log('✅ MongoDB connected successfully');
+
     app.listen(PORT, () => {
-      console.log(`🧠 MindSpace 3D server running at http://localhost:${PORT}`);
-      console.log(`📊 API available at http://localhost:${PORT}/api`);
+      console.log(`🧠 MindSpace 3D server running`);
+      console.log(`📊 API available at /api`);
     });
   })
   .catch((err) => {
     console.error('❌ MongoDB connection error:', err.message);
-    console.log('💡 Make sure MongoDB is running locally or update MONGODB_URI in .env');
-    // Start server even without DB for frontend development
-    app.listen(PORT, () => {
-      console.log(`⚠️  Server running WITHOUT database at http://localhost:${PORT}`);
-    });
+    process.exit(1); // stop server if DB fails (important for production)
   });
-
-module.exports = app;
