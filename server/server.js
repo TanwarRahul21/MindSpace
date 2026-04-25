@@ -1,7 +1,7 @@
 /**
  * MindSpace 3D – AI Mental Wellness Platform
  * Main Server Entry Point
- * 
+ *
  * This file initializes Express server, connects to MongoDB,
  * sets up middleware, and registers all API routes.
  */
@@ -25,53 +25,58 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 // ─── Middleware ───────────────────────────────────────────────
-app.use(cors());                              // Enable CORS for all origins
-app.use(morgan('dev'));                       // HTTP request logger
-app.use(express.json());                      // Parse JSON request bodies
-app.use(express.urlencoded({ extended: true })); // Parse URL-encoded bodies
-
-// Serve static frontend files from /public
+const corsOptions = {
+  origin: process.env.FRONTEND_URL || 'http://localhost:5173',
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  credentials: true,
+};
+app.use(cors(corsOptions));
+app.use(morgan('dev'));
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, '..', 'public')));
 
 // ─── API Routes ──────────────────────────────────────────────
-app.use('/api/auth', authRoutes);       // Authentication (register, login)
-app.use('/api/mood', moodRoutes);       // Mood tracking CRUD
-app.use('/api/journal', journalRoutes); // Journal entries CRUD
-app.use('/api/products', productRoutes); // Shop products listing
-app.use('/api/payment', paymentRoutes); // Razorpay payment routes
-app.use('/api', chatRoutes);            // Chatbot endpoint
+app.use('/api/auth', authRoutes);
+app.use('/api/mood', moodRoutes);
+app.use('/api/journal', journalRoutes);
+app.use('/api/products', productRoutes);
+app.use('/api/payment', paymentRoutes);
+app.use('/api', chatRoutes);
 
-// Health check endpoint
 app.get('/api/health', (req, res) => {
   res.json({ status: 'ok', message: 'MindSpace 3D API is running 🧠✨' });
 });
 
-// Serve the frontend for any non-API route (SPA support)
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, '..', 'public', 'index.html'));
 });
 
 // ─── MongoDB Connection ──────────────────────────────────────
-// ─── MongoDB Connection ──────────────────────────────────────
+const DB_URI = process.env.MONGODB_URI || process.env.MONGO_URI;
 
-// FIX: use correct env variable name
-const MONGODB_URI = process.env.MONGO_URI;
-
-if (!MONGODB_URI) {
-  console.error("❌ MONGO_URI is not defined in environment variables");
+if (!DB_URI) {
+  console.error('❌ ERROR: MONGODB_URI is not defined in your environment variables.');
+  console.error('Please add MONGODB_URI to your .env file or Render environment variables.');
   process.exit(1);
 }
 
-mongoose.connect(MONGODB_URI)
+const mongooseOptions = {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+  serverSelectionTimeoutMS: 5000,
+};
+
+mongoose
+  .connect(DB_URI, mongooseOptions)
   .then(() => {
     console.log('✅ MongoDB connected successfully');
-
     app.listen(PORT, () => {
-      console.log(`🧠 MindSpace 3D server running`);
+      console.log(`🧠 MindSpace 3D server running on port ${PORT}`);
       console.log(`📊 API available at /api`);
     });
   })
   .catch((err) => {
     console.error('❌ MongoDB connection error:', err.message);
-    process.exit(1); // stop server if DB fails (important for production)
+    process.exit(1);
   });
