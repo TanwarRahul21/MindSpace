@@ -1,4 +1,4 @@
-# 🧠 MindSpace 3D – AI Mental Wellness Platform
+# MindSpace 3D – AI Mental Wellness Platform
 
 <div align="center">
 
@@ -16,31 +16,31 @@
 
 ---
 
-## ✨ Features
+##  Features
 
-### 🎯 Core Features
+###  Core Features
 
 | Feature | Description |
 |---------|-------------|
-| 📊 **Dashboard** | Overview with mood analytics, charts, daily tips, and activity history |
-| 😊 **Mood Tracker** | Select emotions (happy, sad, stressed, angry, calm, anxious) with intensity and notes |
-| 🤖 **AI Companion** | Intelligent chatbot providing supportive suggestions for mental wellness |
-| 🌬️ **Breathing & Meditation** | Guided breathing exercises (Box, 4-7-8, Deep) with visual animations |
-| 📝 **Personal Journal** | Write daily thoughts with mood tagging and full CRUD operations |
-| 🎮 **Stress Relief Games** | Bubble popping, Zen garden, and Color flow interactive activities |
-| 🛒 **Wellness Shop** | Browse mental health products (stress balls, journals, essential oils, etc.) |
-| 🗺️ **Activity Finder** | Discover nearby parks, yoga centers, gyms, and more using maps |
-| 🎵 **Calming Music** | Procedurally generated ambient music with 10+ tracks and sound mixer |
-| 🌐 **3D Environment** | Immersive Three.js particle background with interactive visuals |
+|  **Dashboard** | Overview with mood analytics, charts, daily tips, and activity history |
+|  **Mood Tracker** | Select emotions (happy, sad, stressed, angry, calm, anxious) with intensity and notes |
+|  **AI Companion** | Intelligent chatbot providing supportive suggestions for mental wellness |
+|  **Breathing & Meditation** | Guided breathing exercises (Box, 4-7-8, Deep) with visual animations |
+|  **Personal Journal** | Write daily thoughts with mood tagging and full CRUD operations |
+|  **Stress Relief Games** | Bubble popping, Zen garden, and Color flow interactive activities |
+|  **Wellness Shop** | Browse mental health products (stress balls, journals, essential oils, etc.) |
+|  **Activity Finder** | Discover nearby parks, yoga centers, gyms, and more using maps |
+|  **Calming Music** | Procedurally generated ambient music with 10+ tracks and sound mixer |
+|  **3D Environment** | Immersive Three.js particle background with interactive visuals |
 
-### 🔐 Authentication
+###  Authentication
 - User registration and login with JWT tokens
 - Password hashing with bcryptjs
 - Guest mode available for trying the app
 
 ---
 
-## 🛠️ Tech Stack
+##  Tech Stack
 
 ### Frontend
 - **HTML5** – Semantic, accessible markup
@@ -61,7 +61,7 @@
 
 ---
 
-## 🚀 Getting Started
+##  Getting Started
 
 ### Prerequisites
 
@@ -166,7 +166,7 @@ Make sure you have the following installed:
 
 ---
 
-## 📁 Project Structure
+##  Project Structure
 
 ```
 mindspace-3d/
@@ -204,7 +204,7 @@ mindspace-3d/
 
 ---
 
-## 🎨 Design Philosophy
+##  Design Philosophy
 
 - **Glassmorphism UI** – Frosted glass effect with subtle transparency
 - **Dark Theme** – Easy on the eyes, reduces strain
@@ -215,7 +215,7 @@ mindspace-3d/
 
 ---
 
-## 🤝 Contributing
+##  Contributing
 
 1. Fork the repository
 2. Create a feature branch (`git checkout -b feature/amazing-feature`)
@@ -225,13 +225,13 @@ mindspace-3d/
 
 ---
 
-## 📄 License
+##  License
 
 This project is licensed under the MIT License – see the [LICENSE](LICENSE) file for details.
 
 ---
 
-## ⚠️ Disclaimer
+##  Disclaimer
 
 MindSpace 3D is **not** a substitute for professional mental health care. If you're experiencing a mental health crisis, please contact:
 
