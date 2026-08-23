@@ -1,4 +1,4 @@
-# MindSpace 3D – AI Mental Wellness Platform
+#   MindSpace 3D – AI Mental Wellness Platform
 
 <div align="center">
 
